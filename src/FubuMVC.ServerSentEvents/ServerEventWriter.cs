@@ -67,11 +67,15 @@ namespace FubuMVC.ServerSentEvents
             {
                 return false;
             }
-			// Another connectivity issue
-			catch(AccessViolationException)
-			{
-				return false;
-			}
+            // Other connectivity issues
+            catch (AccessViolationException)
+            {
+                return false;
+            }
+            catch (TimeoutException)
+            {
+                return false;
+            }
         }
 
         public bool Write(IServerEvent @event)
